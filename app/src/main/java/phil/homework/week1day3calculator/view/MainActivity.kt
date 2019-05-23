@@ -1,5 +1,7 @@
 package phil.homework.week1day3calculator.view
 
+import android.app.Activity
+import android.content.res.Configuration
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import phil.homework.week1day3calculator.R
 import phil.homework.week1day3calculator.model.Calculator
 import phil.homework.week1day3calculator.presenter.CalculatorViewPresenter
+import phil.homework.week1day3calculator.presenter.MainActivityLandscapePresenter
 import phil.homework.week1day3calculator.presenter.MainActivityPresenter
 import java.lang.Integer.parseInt
 
@@ -18,7 +21,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, CalculatorView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        this.presenter = MainActivityPresenter()
+        if(this.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            this.presenter = MainActivityLandscapePresenter()
+        } else {
+            this.presenter = MainActivityPresenter()
+        }
         presenter.attachView(this)
     }
 
