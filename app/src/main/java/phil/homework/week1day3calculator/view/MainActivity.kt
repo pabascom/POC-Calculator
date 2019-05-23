@@ -4,19 +4,31 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
 import phil.homework.week1day3calculator.R
 import phil.homework.week1day3calculator.model.Calculator
 import phil.homework.week1day3calculator.presenter.CalculatorViewPresenter
+import phil.homework.week1day3calculator.presenter.MainActivityPresenter
 import java.lang.Integer.parseInt
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, CalculatorView {
-
     lateinit var presenter: CalculatorViewPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        this.presenter = MainActivityPresenter()
+        presenter.attachView(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.detachView()
+    }
+
+    override fun updateDisplay(value: String) {
+        tvCalcText.text = value
     }
 
     override fun onClick(view: View?) {

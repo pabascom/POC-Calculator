@@ -8,13 +8,13 @@ abstract class Calculator {
 
     abstract fun getCurrentValue(): String
 
-    abstract fun updateCurrentValue(digit: Int)
+    abstract fun insertDigit(digit: Int)
 
     abstract fun insertDecimal()
 
     abstract fun enqueueOperator(operator: Operator)
 
-    abstract fun enqueueConstant(constant: Constant)
+    abstract fun enterConstant(constant: Constant)
 
     abstract fun equate()
 

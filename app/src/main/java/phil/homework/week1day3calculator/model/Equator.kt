@@ -9,7 +9,7 @@ class Equator(): Calculator() {
         return value.toString()
     }
 
-    override fun updateCurrentValue(digit: Int) {
+    override fun insertDigit(digit: Int) {
         value.append(digit)
     }
 
@@ -27,7 +27,7 @@ class Equator(): Calculator() {
         }
     }
 
-    override fun enqueueConstant(constant: Constant) {
+    override fun enterConstant(constant: Constant) {
         value = when(constant){
             Constant.PI -> StringBuilder("3.1ish")
             Constant.E -> StringBuilder("like two thirds")

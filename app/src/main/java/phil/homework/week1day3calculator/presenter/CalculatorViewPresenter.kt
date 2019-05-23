@@ -2,12 +2,13 @@ package phil.homework.week1day3calculator.presenter
 
 import android.view.View
 import phil.homework.week1day3calculator.model.Calculator
+import phil.homework.week1day3calculator.view.CalculatorView
 
 interface CalculatorViewPresenter {
 
-    fun attachView(view: View)
+    fun attachView(view: CalculatorView)
 
-    fun detachView(view: View)
+    fun detachView()
 
     fun registerDigitInput(digit: Int)
 
